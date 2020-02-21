@@ -89,113 +89,110 @@ X_RESULT WinKeyInputDriver::GetState(uint32_t user_index,
   int16_t thumb_ry = 0;
 
   if (window_->has_focus()) {
-    if (IS_KEY_TOGGLED(VK_CAPITAL) || IS_KEY_DOWN(VK_SHIFT)) {
-      // dpad toggled
-      if (IS_KEY_DOWN('A')) {
-        // A
-        buttons |= 0x0004;  // XINPUT_GAMEPAD_DPAD_LEFT
-      }
-      if (IS_KEY_DOWN('D')) {
-        // D
-        buttons |= 0x0008;  // XINPUT_GAMEPAD_DPAD_RIGHT
-      }
-      if (IS_KEY_DOWN('S')) {
-        // S
-        buttons |= 0x0002;  // XINPUT_GAMEPAD_DPAD_DOWN
-      }
-      if (IS_KEY_DOWN('W')) {
-        // W
-        buttons |= 0x0001;  // XINPUT_GAMEPAD_DPAD_UP
-      }
-    } else {
-      // left stick
-      if (IS_KEY_DOWN('A')) {
-        // A
-        thumb_lx += SHRT_MIN;
-      }
-      if (IS_KEY_DOWN('D')) {
-        // D
-        thumb_lx += SHRT_MAX;
-      }
-      if (IS_KEY_DOWN('S')) {
-        // S
-        thumb_ly += SHRT_MIN;
-      }
-      if (IS_KEY_DOWN('W')) {
-        // W
-        thumb_ly += SHRT_MAX;
-      }
+    // dpad toggled
+    if (IS_KEY_DOWN(VK_LEFT)) {
+      // Left
+      buttons |= 0x0004;  // XINPUT_GAMEPAD_DPAD_LEFT
+    }
+    if (IS_KEY_DOWN(VK_RIGHT)) {
+      // Right
+      buttons |= 0x0008;  // XINPUT_GAMEPAD_DPAD_RIGHT
+    }
+    if (IS_KEY_DOWN(VK_DOWN)) {
+      // Down
+      buttons |= 0x0002;  // XINPUT_GAMEPAD_DPAD_DOWN
+    }
+    if (IS_KEY_DOWN(VK_UP)) {
+      // Up
+      buttons |= 0x0001;  // XINPUT_GAMEPAD_DPAD_UP
+    }
+    // left stick
+    if (IS_KEY_DOWN(VK_NUMPAD4)) {
+      // Num4
+      thumb_lx += SHRT_MIN;
+    }
+    if (IS_KEY_DOWN(VK_NUMPAD6)) {
+      // Num6
+      thumb_lx += SHRT_MAX;
+    }
+    if (IS_KEY_DOWN(VK_NUMPAD2)) {
+      // Num2
+      thumb_ly += SHRT_MIN;
+    }
+    if (IS_KEY_DOWN(VK_NUMPAD8)) {
+      // Num8
+      thumb_ly += SHRT_MAX;
     }
 
-    if (IS_KEY_DOWN('F')) {
-      // F
+    if (IS_KEY_DOWN('G')) {
+      // G
       buttons |= 0x0040;  // XINPUT_GAMEPAD_LEFT_THUMB
     }
 
     // Right stick
-    if (IS_KEY_DOWN(VK_UP)) {
-      // Up
+    if (IS_KEY_DOWN(VK_HOME)) {
+      // Home
       thumb_ry += SHRT_MAX;
     }
-    if (IS_KEY_DOWN(VK_DOWN)) {
-      // Down
+    if (IS_KEY_DOWN(VK_END)) {
+      // End
       thumb_ry += SHRT_MIN;
     }
-    if (IS_KEY_DOWN(VK_RIGHT)) {
-      // Right
+    if (IS_KEY_DOWN(VK_NEXT)) {
+      // Page Next
       thumb_rx += SHRT_MAX;
     }
-    if (IS_KEY_DOWN(VK_LEFT)) {
-      // Left
+    if (IS_KEY_DOWN(VK_DELETE)) {
+      // Delete
       thumb_rx += SHRT_MIN;
     }
 
-    if (IS_KEY_DOWN('L')) {
-      // L
+    if (IS_KEY_DOWN('R')) {
+      // R
       buttons |= 0x4000;  // XINPUT_GAMEPAD_X
     }
-    if (IS_KEY_DOWN(VK_OEM_7)) {
-      // '
+    if (IS_KEY_DOWN(VK_SPACE)) {
+      // Space
       buttons |= 0x2000;  // XINPUT_GAMEPAD_B
     }
-    if (IS_KEY_DOWN(VK_OEM_1)) {
-      // ;
+    if (IS_KEY_DOWN(VK_LSHIFT)) {
+      // Left Shift
       buttons |= 0x1000;  // XINPUT_GAMEPAD_A
     }
-    if (IS_KEY_DOWN('P')) {
-      // P
+    if (IS_KEY_DOWN('E')) {
+      // E
       buttons |= 0x8000;  // XINPUT_GAMEPAD_Y
     }
 
-    if (IS_KEY_DOWN('K')) {
-      // K
+    if (IS_KEY_DOWN('V')) {
+      // V
       buttons |= 0x0080;  // XINPUT_GAMEPAD_RIGHT_THUMB
     }
 
-    if (IS_KEY_DOWN('Q') || IS_KEY_DOWN('I')) {
-      // Q / I
+    if (IS_KEY_DOWN('S')) {
+      // S
       left_trigger = 0xFF;
     }
 
-    if (IS_KEY_DOWN('E') || IS_KEY_DOWN('O')) {
-      // E / O
+    if (IS_KEY_DOWN('W')) {
+      // W
       right_trigger = 0xFF;
     }
 
-    if (IS_KEY_DOWN('Z')) {
-      // Z
+    if (IS_KEY_DOWN('Q')) {
+      // Q
       buttons |= 0x0020;  // XINPUT_GAMEPAD_BACK
     }
-    if (IS_KEY_DOWN('X')) {
-      // X
+    if (IS_KEY_DOWN(VK_ESCAPE)) {
+      // Escape
       buttons |= 0x0010;  // XINPUT_GAMEPAD_START
     }
-    if (IS_KEY_DOWN('1')) {
-      // 1
+    if (IS_KEY_DOWN('A')) {
+      // A
       buttons |= 0x0100;  // XINPUT_GAMEPAD_LEFT_SHOULDER
     }
-    if (IS_KEY_DOWN('3')) {
-      // 3
+    if (IS_KEY_DOWN('D')) {
+      // D
       buttons |= 0x0200;  // XINPUT_GAMEPAD_RIGHT_SHOULDER
     }
   }
