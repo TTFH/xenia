@@ -90,37 +90,37 @@ X_RESULT WinKeyInputDriver::GetState(uint32_t user_index,
 
   if (window_->has_focus()) {
     // dpad toggled
-    if (IS_KEY_DOWN(VK_LEFT)) {
-      // Left
-      buttons |= 0x0004;  // XINPUT_GAMEPAD_DPAD_LEFT
-    }
-    if (IS_KEY_DOWN(VK_RIGHT)) {
-      // Right
-      buttons |= 0x0008;  // XINPUT_GAMEPAD_DPAD_RIGHT
-    }
-    if (IS_KEY_DOWN(VK_DOWN)) {
-      // Down
-      buttons |= 0x0002;  // XINPUT_GAMEPAD_DPAD_DOWN
-    }
-    if (IS_KEY_DOWN(VK_UP)) {
-      // Up
-      buttons |= 0x0001;  // XINPUT_GAMEPAD_DPAD_UP
-    }
-    // left stick
     if (IS_KEY_DOWN(VK_NUMPAD4)) {
       // Num4
-      thumb_lx += SHRT_MIN;
+      buttons |= 0x0004;  // XINPUT_GAMEPAD_DPAD_LEFT
     }
     if (IS_KEY_DOWN(VK_NUMPAD6)) {
       // Num6
-      thumb_lx += SHRT_MAX;
+      buttons |= 0x0008;  // XINPUT_GAMEPAD_DPAD_RIGHT
     }
     if (IS_KEY_DOWN(VK_NUMPAD2)) {
       // Num2
-      thumb_ly += SHRT_MIN;
+      buttons |= 0x0002;  // XINPUT_GAMEPAD_DPAD_DOWN
     }
     if (IS_KEY_DOWN(VK_NUMPAD8)) {
       // Num8
+      buttons |= 0x0001;  // XINPUT_GAMEPAD_DPAD_UP
+    }
+    // left stick
+    if (IS_KEY_DOWN(VK_LEFT)) {
+      // Left
+      thumb_lx += SHRT_MIN;
+    }
+    if (IS_KEY_DOWN(VK_RIGHT)) {
+      // Right
+      thumb_lx += SHRT_MAX;
+    }
+    if (IS_KEY_DOWN(VK_DOWN)) {
+      // Down
+      thumb_ly += SHRT_MIN;
+    }
+    if (IS_KEY_DOWN(VK_UP)) {
+      // Up
       thumb_ly += SHRT_MAX;
     }
 
